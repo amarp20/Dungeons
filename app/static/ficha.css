@@ -1,0 +1,34 @@
+body {
+      margin: 0;
+      padding: 0;
+    }
+    .sheet-container {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .sheet-background {
+      width: 100%;
+      display: block;
+    }
+    .interactive-field,
+    .circle-field {
+      position: absolute;
+      box-sizing: border-box;
+      border: 1px solid black;
+      font-size: 10px;
+    }
+    .interactive-field input[type="text"],
+    .circle-field input[type="text"] {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: transparent;
+      font-size: 10px;
+      text-align: center;
+    }
+    .circle-field {
+      border-radius: 50%;
+      overflow: hidden;
+    }

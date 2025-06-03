@@ -4,4 +4,4 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def ficha():
-    return render_template('ficha.html')
+    return render_template('index.html')
