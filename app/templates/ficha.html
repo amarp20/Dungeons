@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook&display=swap" rel="stylesheet">
+  <title>Ficha D&D Interactiva</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .sheet-container {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .sheet-background {
+      width: 100%;
+      display: block;
+    }
+    .interactive-field,
+    .circle-field {
+      position: absolute;
+      box-sizing: border-box;
+      border: 1px solid black;
+      font-size: 10px;
+    }
+    .interactive-field input[type="text"],
+    .circle-field input[type="text"] {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: transparent;
+      font-size: 10px;
+      text-align: center;
+    }
+    .circle-field {
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet-container">
+    <img src="{{ url_for('static', filename='img/ficha_1.png') }}" alt="Ficha D&D" class="sheet-background">
+    <div class="interactive-field" style="top: 6.10%; left: 5.49%; width: 36.52%; height: 3.54%;">
+      <input type="text" id="nombrepersonaje" style="font-size: 20px; font-weight: bold; font-family: 'UnifrakturCook', cursive;">
+    </div>
+    <div class="interactive-field" style="top: 4.47%; left: 43.92%; width: 11.22%; height: 2.53%;">
+      <input type="text" id="clase">
+    </div>
+    <div class="interactive-field" style="top: 4.47%; left: 55.59%; width: 6.06%; height: 2.53%;">
+      <input type="text" id="nivel">
+    </div>
+    <div class="interactive-field" style="top: 4.47%; left: 63.24%; width: 14.84%; height: 2.53%;">
+      <input type="text" id="trasfondo">
+    </div>
+    <div class="interactive-field" style="top: 4.47%; left: 79.54%; width: 15.29%; height: 2.59%;">
+      <input type="text" id="nobrejugador">
+    </div>
+    <div class="interactive-field" style="top: 7.95%; left: 43.92%; width: 18.71%; height: 2.50%;">
+      <input type="text" id="raza">
+    </div>
+    <div class="interactive-field" style="top: 7.95%; left: 63.24%; width: 15.25%; height: 2.50%;">
+      <input type="text" id="alineamiento">
+    </div>
+    <div class="interactive-field" style="top: 7.95%; left: 79.38%; width: 15.33%; height: 2.40%;">
+      <input type="text" id="puntosexp">
+    </div>
+    <div class="interactive-field" style="top: 16.39%; left: 68.36%; width: 27.78%; height: 6.47%;">
+      <input type="text" id="rasgospers">
+    </div>
+    <div class="interactive-field" style="top: 25.26%; left: 68.44%; width: 27.69%; height: 4.74%;">
+      <input type="text" id="ideales">
+    </div>
+    <div class="interactive-field" style="top: 32.35%; left: 68.36%; width: 27.78%; height: 4.87%;">
+      <input type="text" id="vinculos">
+    </div>
+    <div class="interactive-field" style="top: 39.22%; left: 68.36%; width: 27.94%; height: 5.24%;">
+      <input type="text" id="defectos">
+    </div>
+    <div class="interactive-field" style="top: 18.05%; left: 55.75%; width: 8.38%; height: 3.85%;">
+      <input type="text" id="velocidad">
+    </div>
+    <div class="interactive-field" style="top: 18.05%; left: 45.71%; width: 8.38%; height: 3.60%;">
+      <input type="text" id="iniciativa">
+    </div>
+    <div class="interactive-field" style="top: 23.72%; left: 51.32%; width: 11.75%; height: 1.82%;">
+      <input type="text" id="pgmax">
+    </div>
+    <div class="interactive-field" style="top: 26.16%; left: 40.30%; width: 20.66%; height: 3.94%;">
+      <input type="text" id="pgact">
+    </div>
+    <div class="interactive-field" style="top: 32.41%; left: 40.30%; width: 20.82%; height: 4.47%;">
+      <input type="text" id="pgtemp">
+    </div>
+    <div class="interactive-field" style="top: 39.40%; left: 40.50%; width: 7.85%; height: 1.60%;">
+      <input type="text" id="dadosgolpetot">
+    </div>
+    <div class="interactive-field" style="top: 41.28%; left: 38.47%; width: 9.80%; height: 2.99%;">
+      <input type="text" id="dadosgolpe">
+    </div>
+    <div class="interactive-field" style="top: 15.37%; left: 14.36%; width: 4.60%; height: 2.96%;">
+      <input type="text" id="inspiracion">
+    </div>
+    <div class="interactive-field" style="top: 25.08%; left: 17.53%; width: 2.48%; height: 1.42%;">
+      <input type="text" id="salvfuerza">
+    </div>
+    <div class="interactive-field" style="top: 26.68%; left: 17.45%; width: 2.44%; height: 1.60%;">
+      <input type="text" id="salvdestreza">
+    </div>
+    <div class="interactive-field" style="top: 28.50%; left: 17.45%; width: 2.56%; height: 1.54%;">
+      <input type="text" id="salvconstitucion">
+    </div>
+    <div class="interactive-field" style="top: 30.16%; left: 17.61%; width: 2.28%; height: 1.54%;">
+      <input type="text" id="salvinteligencia">
+    </div>
+    <div class="interactive-field" style="top: 31.92%; left: 17.61%; width: 2.40%; height: 1.60%;">
+      <input type="text" id="salvsabiduria">
+    </div>
+    <div class="interactive-field" style="top: 33.70%; left: 17.45%; width: 2.56%; height: 1.54%;">
+      <input type="text" id="salvcarisma">
+    </div>
+    <div class="interactive-field" style="top: 39.68%; left: 17.32%; width: 2.48%; height: 1.60%;">
+      <input type="text" id="salvacrobacias">
+    </div>
+    <div class="interactive-field" style="top: 41.47%; left: 17.45%; width: 2.36%; height: 1.63%;">
+      <input type="text" id="salvatletismo">
+    </div>
+    <div class="interactive-field" style="top: 43.28%; left: 17.32%; width: 2.56%; height: 1.60%;">
+      <input type="text" id="salvcarcano">
+    </div>
+    <div class="interactive-field" style="top: 45.04%; left: 17.32%; width: 2.48%; height: 1.48%;">
+      <input type="text" id="salvengaño">
+    </div>
+    <div class="interactive-field" style="top: 46.64%; left: 17.45%; width: 2.36%; height: 1.73%;">
+      <input type="text" id="salvhistoria">
+    </div>
+    <div class="interactive-field" style="top: 48.49%; left: 17.45%; width: 2.28%; height: 1.48%;">
+      <input type="text" id="salvinterpretacion">
+    </div>
+    <div class="interactive-field" style="top: 50.18%; left: 17.45%; width: 2.28%; height: 1.45%;">
+      <input type="text" id="salvintimidacion">
+    </div>
+    <div class="interactive-field" style="top: 51.94%; left: 17.53%; width: 2.20%; height: 1.45%;">
+      <input type="text" id="salvinvestigacion">
+    </div>
+    <div class="interactive-field" style="top: 53.60%; left: 17.53%; width: 2.20%; height: 1.54%;">
+      <input type="text" id="salvjuegomanos">
+    </div>
+    <div class="interactive-field" style="top: 55.36%; left: 17.45%; width: 2.44%; height: 1.54%;">
+      <input type="text" id="salvmedicina">
+    </div>
+    <div class="interactive-field" style="top: 57.09%; left: 17.53%; width: 2.36%; height: 1.60%;">
+      <input type="text" id="salvnaturaleza">
+    </div>
+    <div class="interactive-field" style="top: 58.81%; left: 17.45%; width: 2.36%; height: 1.60%;">
+      <input type="text" id="salvpercepcion">
+    </div>
+    <div class="interactive-field" style="top: 60.51%; left: 17.53%; width: 2.20%; height: 1.60%;">
+      <input type="text" id="salvperspicacia">
+    </div>
+    <div class="interactive-field" style="top: 62.29%; left: 17.32%; width: 2.48%; height: 1.54%;">
+      <input type="text" id="salvpersuasion">
+    </div>
+    <div class="interactive-field" style="top: 64.05%; left: 17.53%; width: 2.20%; height: 1.54%;">
+      <input type="text" id="salvreligion">
+    </div>
+    <div class="interactive-field" style="top: 65.87%; left: 17.69%; width: 2.11%; height: 1.39%;">
+      <input type="text" id="salvsigilo">
+    </div>
+    <div class="interactive-field" style="top: 67.44%; left: 17.61%; width: 2.20%; height: 1.54%;">
+      <input type="text" id="salvsupervivencia">
+    </div>
+    <div class="interactive-field" style="top: 69.22%; left: 17.53%; width: 2.28%; height: 1.48%;">
+      <input type="text" id="salvtanimales">
+    </div>
+    <div class="interactive-field" style="top: 18.64%; left: 3.90%; width: 8.21%; height: 3.54%;">
+      <input type="text" id="fuerza">
+    </div>
+    <div class="interactive-field" style="top: 27.76%; left: 3.90%; width: 8.21%; height: 3.73%;">
+      <input type="text" id="destreza">
+    </div>
+    <div class="interactive-field" style="top: 36.91%; left: 3.99%; width: 8.13%; height: 3.48%;">
+      <input type="text" id="constitucion">
+    </div>
+    <div class="interactive-field" style="top: 46.27%; left: 3.90%; width: 8.21%; height: 3.36%;">
+      <input type="text" id="inteligencia">
+    </div>
+    <div class="interactive-field" style="top: 55.30%; left: 4.11%; width: 8.01%; height: 3.54%;">
+      <input type="text" id="sabiduria">
+    </div>
+    <div class="interactive-field" style="top: 64.36%; left: 3.99%; width: 8.21%; height: 3.67%;">
+      <input type="text" id="carisma">
+    </div>
+    <div class="interactive-field" style="top: 47.75%; left: 67.34%; width: 30.22%; height: 48.24%;">
+      <input type="text" id="rasgosatributos">
+    </div>
+    <div class="interactive-field" style="top: 78.74%; left: 3.58%; width: 29.24%; height: 17.25%;">
+      <input type="text" id="otrascompidio">
+    </div>
+    <div class="interactive-field" style="top: 74.61%; left: 43.31%; width: 21.84%; height: 21.32%;">
+      <input type="text" id="equipo">
+    </div>
+    <div class="interactive-field" style="top: 49.17%; left: 36.23%; width: 10.70%; height: 1.94%;">
+      <input type="text" id="nconj1">
+    </div>
+    <div class="interactive-field" style="top: 49.17%; left: 47.99%; width: 5.04%; height: 1.94%;">
+      <input type="text" id="bconj1">
+    </div>
+    <div class="interactive-field" style="top: 49.23%; left: 54.01%; width: 10.41%; height: 1.88%;">
+      <input type="text" id="dconj1">
+    </div>
+    <div class="interactive-field" style="top: 51.76%; left: 36.36%; width: 10.57%; height: 2.00%;">
+      <input type="text" id="nconj2">
+    </div>
+    <div class="interactive-field" style="top: 51.73%; left: 47.91%; width: 5.29%; height: 2.00%;">
+      <input type="text" id="bconj2">
+    </div>
+    <div class="interactive-field" style="top: 51.73%; left: 53.92%; width: 10.49%; height: 2.00%;">
+      <input type="text" id="dconj2">
+    </div>
+    <div class="interactive-field" style="top: 54.34%; left: 36.44%; width: 10.57%; height: 2.19%;">
+      <input type="text" id="nconj3">
+    </div>
+    <div class="interactive-field" style="top: 54.31%; left: 47.82%; width: 5.37%; height: 2.16%;">
+      <input type="text" id="bconj3">
+    </div>
+    <div class="interactive-field" style="top: 54.31%; left: 53.92%; width: 10.49%; height: 2.22%;">
+      <input type="text" id="dconj3">
+    </div>
+    <div class="interactive-field" style="top: 57.09%; left: 36.23%; width: 10.98%; height: 2.25%;">
+      <input type="text" id="nconj4">
+    </div>
+    <div class="interactive-field" style="top: 57.05%; left: 47.82%; width: 5.49%; height: 2.22%;">
+      <input type="text" id="bconj4">
+    </div>
+    <div class="interactive-field" style="top: 57.05%; left: 53.92%; width: 10.49%; height: 2.22%;">
+      <input type="text" id="dconj4">
+    </div>
+    <div class="interactive-field" style="top: 59.61%; left: 36.23%; width: 10.98%; height: 2.56%;">
+      <input type="text" id="nconj5">
+    </div>
+    <div class="interactive-field" style="top: 59.55%; left: 47.74%; width: 5.73%; height: 2.56%;">
+      <input type="text" id="bconj5">
+    </div>
+    <div class="interactive-field" style="top: 59.55%; left: 53.84%; width: 10.65%; height: 2.62%;">
+      <input type="text" id="dconj5">
+    </div>
+    <div class="interactive-field" style="top: 62.45%; left: 36.23%; width: 11.06%; height: 2.59%;">
+      <input type="text" id="nconj6">
+    </div>
+    <div class="interactive-field" style="top: 62.42%; left: 47.66%; width: 5.90%; height: 2.62%;">
+      <input type="text" id="bconj6">
+    </div>
+    <div class="interactive-field" style="top: 62.42%; left: 53.84%; width: 10.65%; height: 2.62%;">
+      <input type="text" id="dconj6">
+    </div>
+    <div class="interactive-field" style="top: 65.25%; left: 36.23%; width: 11.06%; height: 2.62%;">
+      <input type="text" id="nconj7">
+    </div>
+    <div class="interactive-field" style="top: 65.31%; left: 47.66%; width: 5.90%; height: 2.50%;">
+      <input type="text" id="bconj7">
+    </div>
+    <div class="interactive-field" style="top: 65.25%; left: 53.92%; width: 10.57%; height: 2.56%;">
+      <input type="text" id="dconj7">
+    </div>
+    <div class="interactive-field" style="top: 68.21%; left: 36.23%; width: 10.98%; height: 2.40%;">
+      <input type="text" id="nconj8">
+    </div>
+    <div class="interactive-field" style="top: 68.21%; left: 47.66%; width: 5.98%; height: 2.46%;">
+      <input type="text" id="bconj8">
+    </div>
+    <div class="interactive-field" style="top: 68.08%; left: 53.84%; width: 10.65%; height: 2.59%;">
+      <input type="text" id="dconj8">
+    </div>
+    <div class="interactive-field" style="top: 18.85%; left: 36.60%; width: 7.69%; height: 3.54%;">
+      <input type="text" id="clasearmadura">
+    </div>
+    <div class="interactive-field" style="top: 75.39%; left: 36.23%; width: 6.91%; height: 2.68%;">
+      <input type="text" id="pc">
+    </div>
+    <div class="interactive-field" style="top: 78.74%; left: 36.44%; width: 6.71%; height: 2.59%;">
+      <input type="text" id="pp">
+    </div>
+    <div class="interactive-field" style="top: 85.55%; left: 36.36%; width: 6.71%; height: 2.62%;">
+      <input type="text" id="po">
+    </div>
+    <div class="interactive-field" style="top: 88.76%; left: 36.23%; width: 7.36%; height: 2.80%;">
+      <input type="text" id="ppt">
+    </div>
+    <div class="interactive-field" style="top: 82.16%; left: 36.36%; width: 6.71%; height: 2.74%;">
+      <input type="text" id="pe">
+    </div>
+    <div class="circle-field" style="top: 40.3%; left: 61.68%; width: 1.17%; height: 1.00%;">
+      <input type="text" id="exitomuerte1">
+    </div>
+    <div class="circle-field" style="top: 40.3%; left: 59.45%; width: 1.30%; height: 1.00%;">
+      <input type="text" id="exitomuerte2">
+    </div>
+    <div class="circle-field" style="top: 40.3%; left: 57.25%; width: 1.17%; height: 1.00%;">
+      <input type="text" id="exitomuerte3">
+    </div>
+    <div class="circle-field" style="top: 42.2%; left: 61.64%; width: 1.17%; height: 1.00%;">
+      <input type="text" id="fallomuerte1">
+    </div>
+    <div class="circle-field" style="top: 42.2%; left: 59.56%; width: 1.17%; height: 1.00%;">
+      <input type="text" id="fallomuerte2">
+    </div>
+    <div class="circle-field" style="top: 42.2%; left: 57.25%; width: 1.17%; height: 1.00%;">
+      <input type="text" id="fallomuerte3">
+    </div>
+    <div class="circle-field" style="top: 20.3%; left: 14.68%; width: 4.23%; height: 2.70%;">
+      <input type="text" id="bonifcompetencia">
+    </div>
+    <div class="circle-field" style="top: 27.35%; left: 15.44%; width: 1.50%; height: 1.00%;">
+      <input type="text" id="cdestreza">
+    </div>
+    <div class="circle-field" style="top: 29.14%; left: 15.47%; width: 1.43%; height: 1.00%;">
+      <input type="text" id="cconstitucion">
+    </div>
+    <div class="circle-field" style="top: 30.80%; left: 15.47%; width: 1.43%; height: 1.00%;">
+      <input type="text" id="cinteligencia">
+    </div>
+    <div class="circle-field" style="top: 32.58%; left: 15.41%; width: 1.56%; height: 1.00%;">
+      <input type="text" id="csabiduria">
+    </div>
+    <div class="circle-field" style="top: 34.35%; left: 15.47%; width: 1.43%; height: 1.00%;">
+      <input type="text" id="ccarisma">
+    </div>
+    <div class="circle-field" style="top: 40.47%; left: 15.41%; width: 1.56%; height: 1.00%;">
+      <input type="text" id="cacrobacias">
+    </div>
+    <div class="circle-field" style="top: 42.19%; left: 15.48%; width: 1.56%; height: 1.00%;">
+      <input type="text" id="catletismo">
+    </div>
+    <div class="circle-field" style="top: 44.01%; left: 15.48%; width: 1.56%; height: 1.00%;">
+      <input type="text" id="ccarcano">
+    </div>
+    <div class="circle-field" style="top: 45.76%; left: 15.44%; width: 1.50%; height: 1.00%;">
+      <input type="text" id="cengaño">
+    </div>
+    <div class="circle-field" style="top: 47.50%; left: 15.47%; width: 1.43%; height: 1.00%;">
+      <input type="text" id="chistoria">
+    </div>
+    <div class="circle-field" style="top: 49.17%; left: 15.47%; width: 1.43%; height: 1.00%;">
+      <input type="text" id="cinterpretacion">
+    </div>
+    <div class="circle-field" style="top: 50.92%; left: 15.34%; width: 1.69%; height: 1.00%;">
+      <input type="text" id="cintimidacion">
+    </div>
+    <div class="circle-field" style="top: 52.66%; left: 15.36%; width: 1.50%; height: 1.00%;">
+      <input type="text" id="cinvestigacion">
+    </div>
+    <div class="circle-field" style="top: 25.70%; left: 15.44%; width: 1.50%; height: 1.00%;">
+      <input type="text" id="cfuerza">
+    </div>
+    <div class="circle-field" style="top: 54.41%; left: 15.34%; width: 1.69%; height: 1.00%;">
+      <input type="text" id="cjuegomanos">
+    </div>
+    <div class="circle-field" style="top: 56.20%; left: 15.44%; width: 1.50%; height: 1.00%;">
+      <input type="text" id="cmedicina">
+    </div>
+    <div class="circle-field" style="top: 57.80%; left: 15.44%; width: 1.50%; height: 1.00%;">
+      <input type="text" id="cnaturaleza">
+    </div>
+    <div class="circle-field" style="top: 59.54%; left: 15.42%; width: 1.37%; height: 1.00%;">
+      <input type="text" id="cpercepcion">
+    </div>
+    <div class="circle-field" style="top: 61.27%; left: 15.50%; width: 1.37%; height: 1.00%;">
+      <input type="text" id="cperspicacia">
+    </div>
+    <div class="circle-field" style="top: 63.08%; left: 15.50%; width: 1.37%; height: 1%;">
+      <input type="text" id="cpersuasion">
+    </div>
+    <div class="circle-field" style="top: 64.77%; left: 15.36%; width: 1.50%; height: 1%;">
+      <input type="text" id="creligion">
+    </div>
+    <div class="circle-field" style="top: 66.48%; left: 15.42%; width: 1.69%; height: 1%;">
+      <input type="text" id="csigilo">
+    </div>
+    <div class="circle-field" style="top: 68.23%; left: 15.58%; width: 1.37%; height: 1%;">
+      <input type="text" id="csupervivencia">
+    </div>
+    <div class="circle-field" style="top: 69.91%; left: 15.34%; width: 1.69%; height: 1%;">
+      <input type="text" id="ctanimales">
+    </div>
+    <div class="circle-field" style="top: 22.8%; left: 6.85%; width: 2.8%; height: 2.1%;">
+      <input type="text" id="bfuerza">
+    </div>
+    <div class="circle-field" style="top: 31.8%; left: 6.85%; width: 2.8%; height: 2.1%;">
+      <input type="text" id="bdestreza">
+    </div>
+    <div class="circle-field" style="top: 41%; left: 6.85%; width: 2.8%; height: 2.1%;">
+      <input type="text" id="bconstitucion">
+    </div>
+    <div class="circle-field" style="top: 50.2%; left: 6.85%; width: 2.8%; height: 2.1%;">
+      <input type="text" id="binteligencia">
+    </div>
+    <div class="circle-field" style="top: 59.4%; left: 6.85%; width: 2.8%; height: 2.1%;">
+      <input type="text" id="bsabiduria">
+    </div>
+    <div class="circle-field" style="top: 68.5%; left: 6.85%; width: 2.8%; height: 2.1%;">
+      <input type="text" id="bcarisma">
+    </div>
+    <div class="circle-field" style="top: 74.5%; left: 4.05%; width: 3.6%; height: 2.7%;">
+      <input type="text" id="sabiduriaperceppas">
+    </div>
+  </div>
+</body>
+</html>
