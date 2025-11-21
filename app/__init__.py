@@ -6,7 +6,7 @@ def create_app():
     app.config.from_object(Config)
 
     # Importar y registrar rutas
-    from .routes import main
+    from .app import main
     app.register_blueprint(main)
 
     return app

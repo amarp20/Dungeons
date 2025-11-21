@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Ficha D&D{% endblock %}</title>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="pagina-base">
+  <!-- Barra de navegación -->
+  <nav class="navbar">
+    <button onclick="window.location.href='{{ url_for('main.index') }}'">Inicio</button>
+    <button onclick="window.location.href='{{ url_for('main.ficha') }}'">Crear Ficha</button>
+    <button onclick="window.location.href='{{ url_for('main.hechizos') }}'">Hechizos</button>
+  </nav>
+
+  <!-- Contenido de cada vista -->
+  <div class="contenido">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

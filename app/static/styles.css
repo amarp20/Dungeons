@@ -1,43 +1,137 @@
- body {
-      margin: 0;
-      padding: 0;
-      background: url("img/portada.jpg") no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Garamond', 'Georgia', serif;
-      color: #f0e6d2;
-      text-align: center;
-    }
-    .overlay {
-      background-color: rgba(0, 0, 0, 0.6);
-      height: 100vh;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    h1 {
-      font-size: 4em;
-      margin-bottom: 0.2em;
-      text-shadow: 2px 2px 6px #000;
-    }
-    h2 {
-      font-size: 2em;
-      font-weight: normal;
-      margin-top: 0;
-      text-shadow: 1px 1px 4px #000;
-    }
-    .boton-inicio {
-      margin-top: 2em;
-      padding: 1em 2em;
-      font-size: 1.2em;
-      background-color: #8b0000;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .boton-inicio:hover {
-      background-color: #a80000;
-    }
+/* === Estilo general para todas las páginas === */
+body {
+  margin: 0;
+  padding: 0;
+  background: url("img/portada.jpg") no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Garamond', 'Georgia', serif;
+  color: #f0e6d2;
+  text-align: center;
+}
+
+/* === Navegación superior === */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.navbar button {
+  background-color: #8b0000;
+  color: white;
+  padding: 0.5em 1.5em;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.navbar button:hover {
+  background-color: #aa2222;
+}
+
+/* === Página de inicio === */
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 4em;
+  margin-bottom: 0.2em;
+  text-shadow: 2px 2px 6px #000;
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: normal;
+  margin-top: 0;
+  text-shadow: 1px 1px 4px #000;
+}
+
+.boton-inicio {
+  margin-top: 2em;
+  padding: 1em 2em;
+  font-size: 1.2em;
+  background-color: #8b0000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boton-inicio:hover {
+  background-color: #a80000;
+}
+
+/* === Página ficha: estructura visual === */
+.sheet-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  min-height: 1414px;
+  margin: 0 auto 40px auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+/* Fondos específicos si usas clases ficha1, ficha2, ficha3 */
+.ficha1 { background-image: url("img/ficha_1.png"); }
+.ficha2 { background-image: url("img/Ficha_2.png"); }
+.ficha3 { background-image: url("img/Ficha_3.png"); }
+
+/* === Campos interactivos en ficha === */
+.interactive-field,
+.circle-field {
+  position: absolute;
+  box-sizing: border-box;
+  border: 1px solid black;
+  font-size: 10px;
+}
+
+.interactive-field input[type="text"],
+.circle-field input[type="text"] {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  font-size: 10px;
+  text-align: center;
+}
+
+.circle-field {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* === Campos tipo característica (usados en index también) === */
+.etiqueta-caracteristica {
+  background-color: #600000;
+  color: white;
+  font-size: 24px;
+  padding: 6px 12px;
+  display: inline-block;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.input-caracteristica {
+  width: 80px;
+  height: 80px;
+  font-size: 36px;
+  text-align: center;
+  border: 2px solid #aaa;
+  border-radius: 6px;
+}
