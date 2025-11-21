@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: dungeons-app
+    env: python
+    buildCommand: ""
+    startCommand: python run.py
+    plan: free
