@@ -1,8 +1,24 @@
 {% extends 'base.html' %}
 
-{% block title %}Hechizos - Ficha D&D{% endblock %}
+{% block title %}Hechizos{% endblock %}
 
 {% block content %}
-<h1>Hechizos</h1>
-<p>Aquí irán las funciones mágicas del personaje...</p>
+  <h1>Buscador de Hechizos</h1>
+  <form method="get" action="{{ url_for('main.hechizos') }}">
+    <input type="text" name="q" placeholder="Buscar hechizo..." value="{{ request.args.get('q', '') }}">
+    <button type="submit">Buscar</button>
+  </form>
+
+    {% if hechizo %}
+        <h2 class="hechizo-nombre">{{ hechizo['nombre'] }}</h2>
+        <p class="hechizo-descripcion">{{ hechizo.descripcion | replace('\n', '<br><br>') | safe }}</p>
+    {% elif resultados %}
+        <ul class="resultados-hechizos">
+            {% for h in resultados %}
+                <li><a href="{{ url_for('main.hechizos', seleccion=h['nombre']) }}">{{ h['nombre'] }}</a></li>
+            {% endfor %}
+        </ul>
+    {% elif request.args.get('q') %}
+        <p>No se encontraron coincidencias.</p>
+    {% endif %}
 {% endblock %}
